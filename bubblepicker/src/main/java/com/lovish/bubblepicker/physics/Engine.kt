@@ -26,7 +26,7 @@ object Engine {
     private var standardIncreasedGravity = interpolate(500f, 800f, 0.5f)
     private var bubbleRadius = 0.17f
 
-    private val world = World(Vec2(0f, 0f), false)
+    private var world = World(Vec2(0f, 0f), false)
     private const val STEP = 0.0005f
     private val bodies: ArrayList<CircleBody> = ArrayList()
     private var borders: ArrayList<Border> = ArrayList()
@@ -91,8 +91,7 @@ object Engine {
     }
 
     fun clear() {
-        borders.forEach { world.destroyBody(it.itemBody) }
-        bodies.forEach { world.destroyBody(it.physicalBody) }
+        world = World(Vec2(0f, 0f), false)
         borders.clear()
         bodies.clear()
     }
